@@ -14,7 +14,7 @@
 
 Dans un terminal:
 Un simple `git clone `
-Ensuite `cd ./Kalitics.git` pour e rendre dans la racine du projet.
+Ensuite `cd ./Alternance.git` pour accéder à la racine du projet.
 
 ### Installation des vendors
 

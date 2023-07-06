@@ -36,7 +36,7 @@ Rendez-vous sur http://VOTRESERVEUR/Alternance.
 
 ## Technos
 
-- [jQuery3] - Framework JS (front-end)
+- [JavaScript]
 - [Symfony4] - Framework PHP (back-end)
 - [CSS] - Framework JS/CSS (front-end)
 

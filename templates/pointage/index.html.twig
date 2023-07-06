@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Pointages</h1>
+    <style> 
+      
+      #userform td,th {
+         border : 1px solid green;  
+         height:35px;
+         width : 200px;
+         table-layout : auto;
+         padding: 8px;
+         text-align: center;
+        
+         }
+     #userform th {
+         background-color : #00008B;
+         font-size:20px; 
+         color:white;
+         }  
+    #userform p {
+         font-size:20px; 
+         }  
+      #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+      } 
+   </style>
+   <div id = "userform">
+      <a href="{{ path('pointage_new') }}">
+    <button type="button">Ajouter un nouveau pointage</button>
+</a><br><br><br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Utilisateur</th>
+                <th>Durée</th>
+                <th>Chantier</th>
+                <th>Actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for pointage in pointages %}
+                <tr>
+                    <td>{{ pointage.date|date }}</td>
+                    <td>{{ pointage.utilisateur.nom }}</td>
+                    <td>{{ pointage.duree }}</td>
+                    <td>{{ pointage.chantier.nom }}</td>
+                    <td> 
+                                         
+                    <form action="{{ path('pointage_delete', {'id': pointage.id}) }}" method="post"
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce pointage ?')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ pointage.id) }}">
+                        <button type="submit" class="btn btn-link text-danger">Supprimer</button>
+                    </form>
+                    </td>
+                </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">Aucun utilisateur enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

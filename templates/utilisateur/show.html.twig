@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Utilisateur  {{ utilisateur.nom }}</h1>
+<style> 
+      
+      #userform td,th {
+         border : 1px solid green;  
+         height:35px;
+         width : 150px;
+         table-layout : auto;
+         padding: 8px;
+         text-align: center;
+        
+         }
+ 
+        #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+      } 
+   </style> 
+   <div id = "userform">
+   <a href="{{ path('utilisateur_index') }}">
+<button type="button">Retour vers la liste des utilisateurs</button>
+</a><br><br>
+    <table class="table">
+        <tbody>
+
+        <tr>
+            <th>Nom</th>
+            <td>{{ utilisateur.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prénom</th>
+            <td>{{ utilisateur.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Matricule</th>
+            <td>{{ utilisateur.matricule }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>    
+{% endblock %}

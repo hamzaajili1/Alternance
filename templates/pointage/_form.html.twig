@@ -1,0 +1,29 @@
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    
+    <div>
+        {{ form_label(form.date) }}
+        {{ form_widget(form.date) }}
+        {{ form_errors(form.date) }}
+    </div>
+    
+    <div>
+        {{ form_label(form.utilisateur) }}
+        {{ form_widget(form.utilisateur) }}
+        {{ form_errors(form.utilisateur) }}
+    </div>
+    
+    <div>
+        {{ form_label(form.duree) }}
+        {{ form_widget(form.duree) }}
+        {{ form_errors(form.duree) }}
+    </div>
+    
+    <div>
+        {{ form_label(form.chantier) }}
+        {{ form_widget(form.chantier) }}
+        {{ form_errors(form.chantier) }}
+    </div>
+    
+    <button type="submit">Ajouter</button>
+{{ form_end(form) }}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Ajouter un nouveau chantier</h1>
+<style> 
+    #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+    }
+     
+      </style>
+   <div id = "userform">
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Ajouter</button>
+          <a href="{{ path('chantier_index') }}">
+    <button type="button">Retour vers la liste des chantiers</button>
+    </a>
+    {{ form_end(form) }}
+
+  
+    </div>
+{% endblock %}

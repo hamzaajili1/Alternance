@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>Utilisateurs</h1>
+      <p> Vous pouvez depuis la page Utilisateurs : </p>
+    <ul>
+  <li>Ajouter un utilisateur</li>
+  <li>Modifier un utilisateur</li>
+  <li>Supprimer un utilisateur</li>
+</ul>  
+<style> 
+      
+      #userform td,th {
+         border : 1px solid green;  
+         height:35px;
+         width : 200px;
+         table-layout : auto;
+         padding: 8px;
+         text-align: center;
+        
+         }
+     #userform th {
+         background-color : #00008B;
+         font-size:20px; 
+         color:white;
+         }  
+    #userform p {
+         font-size:20px; 
+         }  
+      #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+      } 
+   </style> 
+
+<div id = "userform">
+   <a href="{{ path('utilisateur_new') }}">
+    <button type="button">Ajouter un utilisateur</button>
+</a><br><br><br>
+    <table class="table">
+        <thead>
+        <tr>  
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Matricule</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for utilisateur in utilisateurs %}
+            <tr>
+               
+                <td>{{ utilisateur.nom }}</td>
+                <td>{{ utilisateur.prenom }}</td>
+                <td>{{ utilisateur.matricule }}</td>
+                <td>
+                    <a href="{{ path('utilisateur_show', {'id': utilisateur.id}) }}">
+                    <button type="button">Afficher</button>
+                    </a>
+                    
+                    <a href="{{ path('utilisateur_edit', {'id': utilisateur.id}) }}">
+                    <button type="button">Modifier</button>
+                    </a>
+                   
+                    <form action="{{ path('utilisateur_delete', {'id': utilisateur.id}) }}" method="post"
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ utilisateur.id) }}">
+                        <button type="submit" class="btn btn-link text-danger">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">Aucun utilisateur enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ </div> 
+    
+   
+{% endblock %}
+ 

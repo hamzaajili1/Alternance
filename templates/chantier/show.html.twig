@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Chantier {{ chantier.nom }}</h1>
+<style> 
+      
+      #userform td,th {
+         border : 1px solid green;  
+         height:35px;
+         width : 150px;
+         table-layout : auto;
+         padding: 8px;
+         text-align: center;
+        
+         }
+ 
+        #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+      } 
+   </style> 
+   <div id = "userform">
+      <a href="{{ path('chantier_index') }}">
+<button type="button">Retour vers la liste des chantiers</button>
+</a><br><br>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chantier.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ chantier.nom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ chantier.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Date de début</th>
+                <td>{{ chantier.dateDebut|date('Y-m-d') }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>      
+{% endblock %}

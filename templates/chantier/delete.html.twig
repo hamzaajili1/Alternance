@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Supprimer le chantier</h1>
+<style> 
+    
+        #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+      } 
+   </style> 
+   <div id = "userform">
+    <p>Êtes-vous sûr de vouloir supprimer ce chantier ?</p>
+
+     <form action="{{ path('chantier_delete', {'id': chantier.id}) }}" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ chantier.id) }}">
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a href="{{ path('chantier_index') }}" class="btn btn-link">
+        <button type="button">Annuler</button></a>
+    </form>
+
+
+{% endblock %}
+

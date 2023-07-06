@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Modifier le chantier {{ chantier.nom }}</h1>
+<style> 
+    
+        #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+      } 
+   </style> 
+   <div id = "userform">
+    {{ form_start(form) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.adresse) }}
+        {{ form_row(form.dateDebut) }}
+
+        </br><button type="submit">Modifier</button>
+        
+      <a href="{{ path('chantier_index') }}">
+    <button type="button">Retour vers la liste des chantiers</button>
+    </a>
+    {{ form_end(form) }}
+
+    </div>
+{% endblock %}

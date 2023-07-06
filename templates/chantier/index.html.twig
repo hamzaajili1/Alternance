@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Chantiers</h1>
+<style> 
+      
+      #userform td,th {
+         border : 1px solid green;  
+         height:35px;
+         width : 200px;
+         table-layout : auto;
+         padding: 8px;
+         text-align: center;
+        
+         }
+     #userform th {
+         background-color : #00008B;
+         font-size:20px; 
+         color:white;
+         }  
+    #userform p {
+         font-size:20px; 
+         }  
+      #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+      } 
+   </style> 
+
+<div id = "userform">
+   <a href="{{ path('chantier_new') }}">
+    <button type="button">Ajouter un nouveau chantier</button>
+       
+</a><br><br><br>
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th scope="col">Nom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Date de début</th>
+                <th scope="col">Total heures</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+       <tbody>
+    {% for chantier in chantiers %}
+        <tr>
+           
+            <td>{{ chantier.nom }}</td>
+            <td>{{ chantier.adresse }}</td>
+            <td>{{ chantier.dateDebut|date('Y-m-d') }}</td>
+            <td>{{ chantier.totalHeures }}</td>
+            <td>
+            <a href="{{ path('chantier_show', {'id': chantier.id}) }}">
+            <button type="button">Afficher</button>
+            </a>
+            <a href="{{ path('chantier_edit', {'id': chantier.id}) }}">
+            <button type="button">Modifier</button>
+            </a>
+            
+            <form action="{{ path('chantier_delete', {'id': chantier.id}) }}" method="post"
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce chantier?')">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ chantier.id) }}">
+                        <button type="submit" class="btn btn-link text-danger">Supprimer</button>
+                    </form>
+                
+            </td>
+        </tr>
+    {% endfor %}
+</tbody>
+
+</table>
+</div> 
+ 
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Nouveau Pointage</h1>
+    <style> 
+    #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+    }
+   
+      </style> 
+    
+    
+<div id = "userform">
+{{ include('pointage/_form.html.twig', {'form': form}) }}
+</br><a href="{{ path('pointage_index') }}">
+<button type="button">Retour vers la liste des pointagess</button>
+</a>
+</div>
+  
+{% endblock %}

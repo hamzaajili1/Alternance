@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Kalitics</title>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+</head>
+<body>
+    <nav>
+    <style> 
+        #userform ul {
+            list-style: none; 
+            padding: 0;
+            margin: 0;
+        }
+    
+        #userform button {
+            display: inline-block; 
+            border: 1px solid;
+            padding: 10px;
+            font-size: 16px;
+            box-shadow: 2px 5px #888888;
+            margin: 4px; 
+        } 
+    </style> 
+    <div id="userform">
+        <ul>
+            <li>
+                <button class="button-link" onclick="window.location.href='{{ path('home_index') }}'">Retour à la page d'Accueil</button>
+            </li>
+           
+        </ul>
+    </div>
+    </nav>
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    
+    <script src="{{ asset('js/scripts.js') }}"></script>
+</body>
+</html>

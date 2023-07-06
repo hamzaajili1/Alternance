@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Pointage Details</h1>
+    
+    <table>
+        <tbody>
+            <tr>
+                <th>Date:</th>
+                <td>{{ pointage.date|date }}</td>
+            </tr>
+            <tr>
+                <th>Utilisateur:</th>
+                <td>{{ pointage.utilisateur.nom }}</td>
+            </tr>
+            <tr>
+                <th>Durée:</th>
+                <td>{{ pointage.duree }}</td>
+            </tr>
+            <tr>
+                <th>Chantier:</th>
+                <td>{{ pointage.chantier.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <a href="{{ path('pointage_index') }}">Back to list</a>
+    <a href="{{ path('pointage_edit', {'id': pointage.id}) }}">Edit</a>
+    <a href="{{ path('pointage_delete', {'id': pointage.id}) }}"
+       onclick="event.preventDefault(); if (confirm('Voulez-vous vraiment supprimer ce pointage ??')) { document.getElementById('delete-form').submit(); }">
+        Delete
+    </a>
+    <form id="delete-form" action="{{ path('pointage_delete', {'id': pointage.id}) }}" method="POST" style="display: none;">
+        <input type="hidden" name="_method" value="DELETE">
+        {{ csrf_token('delete' ~ pointage.id) }}
+    </form>
+{% endblock %}

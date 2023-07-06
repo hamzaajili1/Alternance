@@ -1,0 +1,16 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+# config/routes.yaml
+home:
+  path: /
+  controller: App\Controller\HomeController::index
+# routes.yaml
+
+home_index:
+  path: /home
+  controller: App\Controller\HomeController::index
+chantier_delete:
+  path: "/chantier/{id}"
+  controller: 'App\Controller\ChantierController::delete'
+  methods: DELETE

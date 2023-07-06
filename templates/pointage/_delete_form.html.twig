@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Supprimer le pointage</h1>
+    
+    {{ form_start(delete_form, {'attr': {'class': 'delete-form'}}) }}
+        {{ form_widget(delete_form) }}
+        <button type="submit">Supprimer</button>
+    {{ form_end(delete_form) }}
+    
+    <a href="{{ path('pointage_index') }}">Retour vers la liste</a>
+{% endblock %}

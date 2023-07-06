@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Ajouter un nouvel utilisateur</h1>
+<style> 
+    #userform button {  
+         border: 1px solid;
+         padding: 10px; 
+         font-size:16px; 
+         box-shadow: 2px 5px #888888;
+    }
+   
+      
+     
+      </style> 
+{{ form_start(form) }}
+{{ form_row(form.Nom) }}
+<br>
+{{ form_row(form.Prenom) }}
+<br>
+{{ form_row(form.Matricule) }}
+
+{% if form.Matricule.vars.errors|length > 0 %}
+    <div class="alert alert-danger">
+        {% for error in form.Matricule.vars.errors %}
+            {{ error.message }}
+        {% endfor %}
+    </div>
+{% endif %}
+<br><br>
+<div id = "userform">
+<button type="submit">Ajouter</button>
+
+<a href="{{ path('utilisateur_index') }}">
+<button type="button">Retour vers la liste des utilisateurs</button>
+</a>
+</div>
+{{ form_end(form) }}
+    
+{% endblock %}
